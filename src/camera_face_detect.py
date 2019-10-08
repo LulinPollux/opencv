@@ -18,6 +18,7 @@ while True:
         x, y, w, h = face
         cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), thickness=2)
 
+    # 화면에 출력한다.
     cv2.imshow("VideoFrame", frame)
     if cv2.waitKey(1) > 0:
         break

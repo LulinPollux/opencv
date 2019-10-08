@@ -13,7 +13,7 @@ grayscale = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 # 얼굴 인식 특징 파일을 읽는다.
 cascade = cv2.CascadeClassifier(cascade_file)
 
-# 얼굴 인식 실행하기
+# 얼굴 인식을 실행한다.
 faces = cascade.detectMultiScale(grayscale, 1.1, 1)
 
 if len(faces) > 0:
@@ -23,8 +23,7 @@ if len(faces) > 0:
         x, y, w, h = face
         cv2.rectangle(image, (x, y), (x + w, y + h), (0, 0, 255), thickness=5)
 
-    # 화면에 출력한다.
-    cv2.imshow("FaceDetect", image)
-    cv2.waitKey(0)
+    # 파일로 출력한다.
+    cv2.imwrite("faceDetect.jpg", image)
 else:
     print("얼굴 없음.")
