@@ -15,11 +15,12 @@ cv2.createTrackbar('reverse', 'image', 0, 1, nothing)
 while True:
     degree = cv2.getTrackbarPos('degree', 'image')
     reverse = cv2.getTrackbarPos('reverse', 'image')
-    if not reverse:
-        matrix = cv2.getRotationMatrix2D((width/2, height/2), degree, 1)
-    else:
-        matrix = cv2.getRotationMatrix2D((width / 2, height / 2), -degree, 1)
+    if reverse == 1:
+        degree = -degree
+
+    matrix = cv2.getRotationMatrix2D((width/2, height/2), degree, 1)
     dst = cv2.warpAffine(src, matrix, (width, height))
+
     cv2.imshow("image", dst)
     if cv2.waitKey(20) > 0:
         break
