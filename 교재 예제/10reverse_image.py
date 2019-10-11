@@ -1,8 +1,8 @@
 import cv2
 
-src = cv2.imread("res/1.jpg", cv2.IMREAD_COLOR)
+src = cv2.imread("../res/3.jpg", cv2.IMREAD_COLOR)
 
-dst = cv2.cvtColor(src, cv2.COLOR_RGB2GRAY)
+dst = cv2.bitwise_not(src)
 
 cv2.imshow("src", src)
 cv2.imshow("dst", dst)

@@ -1,6 +1,6 @@
 import cv2
 
-src = cv2.imread("res/1.jpg", cv2.IMREAD_COLOR)
+src = cv2.imread("../res/1.jpg", cv2.IMREAD_COLOR)
 
 height, width, channel = src.shape
 dst1 = cv2.pyrUp(src, dstsize=(width * 2, height * 2), borderType=cv2.BORDER_DEFAULT)

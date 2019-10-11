@@ -1,6 +1,6 @@
 import cv2
 
-src = cv2.imread("res/4.jpg", cv2.IMREAD_COLOR)
+src = cv2.imread("../res/4.jpg", cv2.IMREAD_COLOR)
 gray = cv2.cvtColor(src, cv2.COLOR_BGR2GRAY)
 
 canny = cv2.Canny(src, 100, 255)

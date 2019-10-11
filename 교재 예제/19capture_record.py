@@ -1,7 +1,7 @@
 import datetime
 import cv2
 
-capture = cv2.VideoCapture("res/space.mp4")
+capture = cv2.VideoCapture("../res/space.mp4")
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
 record = False
 

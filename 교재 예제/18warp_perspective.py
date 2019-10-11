@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
 
-src = cv2.imread("res/2.jpg", cv2.IMREAD_COLOR)
+src = cv2.imread("../res/2.jpg", cv2.IMREAD_COLOR)
 height, width, channel = src.shape
 
 srcPoint = np.array([[300, 200], [400, 200], [500, 500], [200, 500]], dtype=np.float32)

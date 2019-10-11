@@ -1,6 +1,6 @@
 import cv2
 
-src = cv2.imread("res/1.jpg", cv2.IMREAD_COLOR)
+src = cv2.imread("../res/1.jpg", cv2.IMREAD_COLOR)
 
 height, width, channel = src.shape
 matrix = cv2.getRotationMatrix2D((width/2, height/2), 90, 1)

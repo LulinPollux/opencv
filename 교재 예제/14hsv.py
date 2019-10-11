@@ -2,7 +2,7 @@ import cv2
 
 
 def main1():
-    src = cv2.imread("res/hsv.jpg", cv2.IMREAD_COLOR)
+    src = cv2.imread("../res/hsv.jpg", cv2.IMREAD_COLOR)
     hsv = cv2.cvtColor(src, cv2.COLOR_BGR2HSV)
     h, s, v = cv2.split(hsv)
 
@@ -14,7 +14,7 @@ def main1():
 
 
 def main2():
-    src = cv2.imread("res/hsv.jpg", cv2.IMREAD_COLOR)
+    src = cv2.imread("../res/hsv.jpg", cv2.IMREAD_COLOR)
     hsv = cv2.cvtColor(src, cv2.COLOR_BGR2HSV)
     h, s, v = cv2.split(hsv)
 

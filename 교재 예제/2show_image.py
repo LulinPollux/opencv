@@ -1,6 +1,6 @@
 import cv2
 
-image = cv2.imread("res/1.jpg", cv2.IMREAD_UNCHANGED)
+image = cv2.imread("../res/1.jpg", cv2.IMREAD_UNCHANGED)
 height, width, channel = image.shape
 print(height, width, channel)
 

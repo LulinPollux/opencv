@@ -1,6 +1,6 @@
 import cv2
 
-src = cv2.imread("res/1.jpg", cv2.IMREAD_COLOR)
+src = cv2.imread("../res/1.jpg", cv2.IMREAD_COLOR)
 b, g, r = cv2.split(src)
 inverse = cv2.merge((r, g, b))
 

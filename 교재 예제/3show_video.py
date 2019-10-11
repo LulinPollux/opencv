@@ -1,6 +1,6 @@
 import cv2
 
-capture = cv2.VideoCapture("res/space.mp4")
+capture = cv2.VideoCapture("../res/space.mp4")
 
 while True:
     ret, frame = capture.read()

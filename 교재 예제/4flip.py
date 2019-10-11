@@ -1,6 +1,6 @@
 import cv2
 
-src = cv2.imread("res/1.jpg", cv2.IMREAD_COLOR)
+src = cv2.imread("../res/1.jpg", cv2.IMREAD_COLOR)
 dst1 = cv2.flip(src, 0)     # 상하대칭
 dst2 = cv2.flip(src, 1)     # 좌우대칭
 
