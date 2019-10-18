@@ -1,6 +1,6 @@
 import cv2
 
-image_file = "res/6.jpg"    # 입력 파일
+image_file = "../res/6.jpg"    # 입력 파일
 cascade_file = "C:/Users/Lulin/Miniconda3/envs/opencv/Lib/site-packages" \
                "/cv2/data/haarcascade_frontalface_alt.xml"  # 캐스케이드 파일
 
