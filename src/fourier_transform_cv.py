@@ -26,8 +26,12 @@ f_ishift = np.fft.ifftshift(fshift)
 img_back = cv2.idft(f_ishift)
 img_back = cv2.magnitude(img_back[:, :, 0], img_back[:, :, 1])
 
-plt.subplot(121), plt.imshow(img, cmap='gray')
+plt.subplot(221), plt.imshow(img, cmap='gray')
 plt.title('Input Image'), plt.xticks([]), plt.yticks([])
-plt.subplot(122), plt.imshow(img_back, cmap='gray')
+
+plt.subplot(222), plt.imshow(magnitude_spectrum, cmap='gray')
+plt.title('Spectrum'), plt.xticks([]), plt.yticks([])
+
+plt.subplot(223), plt.imshow(img_back, cmap='gray')
 plt.title('FT'), plt.xticks([]), plt.yticks([])
 plt.show()
