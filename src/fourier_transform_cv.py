@@ -16,7 +16,6 @@ crow, ccol = rows // 2, cols // 2
 # 즉, 고주파영역을 제거하게 됨.
 # d값이 작을수록 사각형이 작고, 바깥영역 즉, 고주파영역이  많이 제거되기 때문에 이미지가 뭉게지고
 # d값이 클수록 사각형이 크고, 바깥영역 즉, 고주파 영역이 적게 제거되기 때문에 원래 이미지와 가까워짐.
-
 d = 30
 mask = np.zeros((rows, cols, 2), np.uint8)
 mask[crow - d:crow + d, ccol - d:ccol + d] = 1
