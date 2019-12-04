@@ -27,7 +27,7 @@ fshift = np.fft.fftshift(f)  # 분석을 용이하게 하기 위해 주파수가
 magnitude_spectrum = 20 * np.log(np.abs(fshift))  # spectrum 구하는 수학식.
 
 rows, cols = img.shape
-crow, ccol = rows / 2, cols / 2  # 이미지의 중심 좌표
+crow, ccol = rows // 2, cols // 2  # 이미지의 중심 좌표
 
 # 중앙에서 10X10 사이즈의 사각형의 값을 1로 설정함. 중앙의 저주파를 모두 제거
 # 저주파를 제거하였기 때문에 배경이 사라지고 경계선만 남게 됨.

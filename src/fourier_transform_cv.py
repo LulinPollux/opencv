@@ -10,7 +10,7 @@ dft_shift = np.fft.fftshift(dft)
 magnitude_spectrum = 20 * np.log(cv2.magnitude(dft_shift[:, :, 0], dft_shift[:, :, 1]))
 
 rows, cols = img.shape
-crow, ccol = rows / 2, cols / 2
+crow, ccol = rows // 2, cols // 2
 
 # 아래는 d 사이지의 사각형을 생성한 후, 사각형 바깥쪽을 제거하는 형태임.
 # 즉, 고주파영역을 제거하게 됨.
