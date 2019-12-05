@@ -19,6 +19,7 @@ dft_ishift = np.fft.ifftshift(dft_shift)  # 셔플링 되었던 것을 역셔플
 idft = cv2.idft(dft_ishift)  # 역 이산 푸리에 변환을 한다.
 idft = cv2.magnitude(idft[:, :, 0], idft[:, :, 1])  # 절대값 적용
 
+
 """ 저주파 통과 필터링(LPF) """
 rows, cols = img.shape
 center_row, center_col = rows // 2, cols // 2  # 이미지의 중심 좌표
@@ -30,8 +31,8 @@ lpf = dft_shift * mask  # 마스크를 적용한다. (요소별 곱셈: n x 1 = 
 lpf_spectrum = 20 * np.log(1 + cv2.magnitude(lpf[:, :, 0], lpf[:, :, 1]))
 
 """ LPF가 적용된 역 이산 푸리에 변환(LPF with IDFT) """
-dft_ishift2 = np.fft.ifftshift(lpf)  # 셔플링 되었던 것을 역셔플링한다.
-lpf_idft = cv2.idft(dft_ishift2)  # 역 이산 푸리에 변환을 한다.
+lpf_ishift = np.fft.ifftshift(lpf)  # 셔플링 되었던 것을 역셔플링한다.
+lpf_idft = cv2.idft(lpf_ishift)  # 역 이산 푸리에 변환을 한다.
 lpf_idft = cv2.magnitude(lpf_idft[:, :, 0], lpf_idft[:, :, 1])  # 절대값 적용
 
 # 결과물을 출력한다.
@@ -47,6 +48,6 @@ plt.title('IDFT'), plt.xticks([]), plt.yticks([])
 plt.subplot(234), plt.imshow(lpf_idft, cmap='gray')  # LPF가 적용된 IDFT 영상
 plt.title('IDFT(LPF apply)'), plt.xticks([]), plt.yticks([])
 
-plt.subplot(235), plt.imshow(lpf_spectrum, cmap='gray')  # LPF가 적용된 IDFT 영상
+plt.subplot(235), plt.imshow(lpf_spectrum, cmap='gray')  # LPF가 적용된 DFT 영상
 plt.title('DFT(LPF apply)'), plt.xticks([]), plt.yticks([])
 plt.show()
