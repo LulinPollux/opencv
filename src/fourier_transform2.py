@@ -27,7 +27,7 @@ mask[center_row - size:center_row + size, center_col - size:center_col + size] =
 hpf = fft_shift * mask  # 마스크를 적용한다. (요소별 곱셈: n x 1 = n, n x 0 = 0)
 hpf_spectrum = 20 * np.log(1 + np.abs(hpf))
 
-""" LPF가 적용된 역방향 고속 푸리에 변환(LPF with IFFT) """
+""" HPF가 적용된 역방향 고속 푸리에 변환(HPF with IFFT) """
 hpf_ishift = np.fft.ifftshift(hpf)  # 셔플링 되었던 것을 역셔플링한다.
 hpf_ifft = np.fft.ifft2(hpf_ishift)  # 역방향 고속 푸리에 변환을 한다.
 hpf_ifft = np.abs(hpf_ifft)  # 절대값 적용
@@ -46,5 +46,8 @@ plt.subplot(234), plt.imshow(hpf_ifft, cmap='gray')  # HPF가 적용된 IFFT 영
 plt.title('IFFT(HPF apply)'), plt.xticks([]), plt.yticks([])
 
 plt.subplot(235), plt.imshow(hpf_spectrum, cmap='gray')  # HPF가 적용된 FFT 영상
-plt.title('IFFT(HPF binary)'), plt.xticks([]), plt.yticks([])
+plt.title('FFT(HPF apply)'), plt.xticks([]), plt.yticks([])
+
+plt.subplot(236), plt.imshow(mask, cmap='gray')  # HPF 마스크
+plt.title('HPF Mask'), plt.xticks([]), plt.yticks([])
 plt.show()
