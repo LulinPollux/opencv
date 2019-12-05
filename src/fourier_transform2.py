@@ -15,7 +15,7 @@ spectrum_img = 20 * np.log(np.abs(fft_shift))  # 스펙트럼 영상을 구한�
 rows, cols = img.shape
 center_row, center_col = rows // 2, cols // 2  # 이미지의 중심 좌표
 size = 10
-# 외곽 = 1, 가운데 = 0
+# 가운데 = 0, 외곽 = 1
 mask = np.ones((rows, cols), np.uint8)
 mask[center_row - size:center_row + size, center_col - size:center_col + size] = 0
 hpf = fft_shift * mask  # 마스크를 적용한다. (요소별 곱셈: n x 1 = n, n x 0 = 0)

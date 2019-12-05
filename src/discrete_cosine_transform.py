@@ -11,12 +11,13 @@ dct = cv2.dct(np.float32(img))  # 이산 코사인 변환을 수행한다.
 spectrum_img = 20 * np.log(cv2.magnitude(dct[:, :], dct[:, :]))  # 스펙트럼 영상을 구한다.
 
 """ 역 이산 코사인 변환(IDCT) """
-idct = cv2.idct(dct)
+idct = cv2.idct(dct)  # 역 이산 코사인 변환을 수행한다.
 
 
 """ 고주파 통과 필터링(HPF) """
 rows, cols = img.shape
 size = 23
+# 왼쪽상단 = 0, 나머지 = 1
 mask = np.ones((rows, cols), np.uint8)
 mask[0:size, 0:size] = 0
 hpf = dct * mask  # 마스크를 적용한다. (요소별 곱셈: n x 1 = n, n x 0 = 0)
@@ -25,6 +26,7 @@ hpf_idct = cv2.idct(hpf)
 """ 저주파 통과 필터링(LPF) """
 rows, cols = img.shape
 size = 256
+# 왼쪽상단 = 1, 나머지 = 0
 mask = np.zeros((rows, cols), np.uint8)
 mask[0:size, 0:size] = 1
 lpf = dct * mask  # 마스크를 적용한다. (요소별 곱셈: n x 1 = n, n x 0 = 0)
