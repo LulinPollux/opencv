@@ -6,9 +6,8 @@ from matplotlib import pyplot as plt
 img = cv2.imread('../res/lenna.bmp')
 img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-""" 이산 푸리에 변환(DFT)
-    적용을 하면 화면 좌측상단(0, 0)이 중심이고, 그곳에 저주파가 모여 있다.
-    분석을 쉽게 하기 위해 셔플링을 하고 Log Scaling을 하여 매우 넓은 범위의 값을 축소시킨다. """
+
+""" 이산 푸리에 변환(DFT) """
 dft = cv2.dft(np.float32(img), flags=cv2.DFT_COMPLEX_OUTPUT)  # 이산 푸리에 변환을 적용한다.
 dft_shift = np.fft.fftshift(dft)  # 셔플링을 한다.
 # 스펙트럼 영상을 구한다. D(u, v) = c x log( |F(u, v)| )
@@ -18,7 +17,6 @@ spectrum = 20 * np.log(1 + cv2.magnitude(dft_shift[:, :, 0], dft_shift[:, :, 1])
 dft_ishift = np.fft.ifftshift(dft_shift)  # 셔플링 되었던 것을 역셔플링한다.
 idft = cv2.idft(dft_ishift)  # 역 이산 푸리에 변환을 한다.
 idft = cv2.magnitude(idft[:, :, 0], idft[:, :, 1])  # 절대값 적용
-
 
 """ 저주파 통과 필터링(LPF) """
 rows, cols = img.shape
@@ -34,6 +32,7 @@ lpf_spectrum = 20 * np.log(1 + cv2.magnitude(lpf[:, :, 0], lpf[:, :, 1]))
 lpf_ishift = np.fft.ifftshift(lpf)  # 셔플링 되었던 것을 역셔플링한다.
 lpf_idft = cv2.idft(lpf_ishift)  # 역 이산 푸리에 변환을 한다.
 lpf_idft = cv2.magnitude(lpf_idft[:, :, 0], lpf_idft[:, :, 1])  # 절대값 적용
+
 
 # 결과물을 출력한다.
 plt.subplot(231), plt.imshow(img, cmap='gray')  # 원본 영상
