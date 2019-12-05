@@ -6,9 +6,7 @@ from matplotlib import pyplot as plt
 img = cv2.imread('../res/lenna.bmp')
 img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-""" 고속 푸리에 변환(FFT)
-    적용을 하면 화면 좌측상단(0, 0)이 중심이고, 그곳에 저주파가 모여 있다.
-    분석을 쉽게 하기 위해 셔플링을 하고 Log Scaling을 하여 매우 넓은 범위의 값을 축소시킨다. """
+""" 고속 푸리에 변환(FFT) """
 fft = np.fft.fft2(img)  # 고속 푸리에 변환을 적용한다.
 fft_shift = np.fft.fftshift(fft)  # 분석을 쉽게 하기 위해 셔플링을 한다.
 spectrum_img = 20 * np.log(np.abs(fft_shift))  # 스펙트럼 영상을 구한다. D(u, v) = c x log( |F(u, v)| )
