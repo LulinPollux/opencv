@@ -23,9 +23,9 @@ rows, cols = img.shape
 center_row, center_col = rows // 2, cols // 2  # 이미지의 중심 좌표
 size = 30  # 통과시킬 저주파 영역의 크기 (n x n)
 # 가운데 = 1, 외곽 = 0
-mask = np.zeros((rows, cols, 2), np.uint8)
-mask[center_row - size:center_row + size, center_col - size:center_col + size] = 1
-lpf = dft_shift * mask  # 마스크를 적용한다. (요소별 곱셈: n x 1 = n, n x 0 = 0)
+lpf_mask = np.zeros((rows, cols, 2), np.uint8)
+lpf_mask[center_row - size:center_row + size, center_col - size:center_col + size] = 1
+lpf = dft_shift * lpf_mask  # 마스크를 적용한다. (요소별 곱셈: n x 1 = n, n x 0 = 0)
 lpf_spectrum = 20 * np.log(1 + cv2.magnitude(lpf[:, :, 0], lpf[:, :, 1]))
 
 """ LPF가 적용된 역 이산 푸리에 변환(LPF with IDFT) """
