@@ -13,17 +13,17 @@ fft = np.fft.fft2(img)  # 고속 푸리에 변환을 적용한다.
 fft_shift = np.fft.fftshift(fft)  # 분석을 쉽게 하기 위해 셔플링을 한다.
 spectrum_img = 20 * np.log(np.abs(fft_shift))  # 스펙트럼 영상을 구한다. D(u, v) = c x log( |F(u, v)| )
 
-""" 고주파 통과 필터링(HPF)
-    중앙에서 10X10 크기의 사각형의 값을 1로 설정하여, 중앙의 저주파를 모두 제거(검게 만듬)
-    저주파를 제거했으므로 배경이 사라지고 에지만 남게 된다. """
-row, col = img.shape
-center_row, center_col = row // 2, col // 2  # 이미지의 중심 좌표
-size = 10  # 제거할 저주파 영역의 크기 (n x n)
-fft_shift[center_row - size:center_row + size, center_col - size:center_col + size] = 1
+""" 고주파 통과 필터링(HPF) """
+rows, cols = img.shape
+center_row, center_col = rows // 2, cols // 2  # 이미지의 중심 좌표
+size = 10
+# 외곽 = 1, 가운데 = 0
+mask = np.ones((rows, cols), np.uint8)
+mask[center_row - size:center_row + size, center_col - size:center_col + size] = 0
+hpf = fft_shift * mask  # 마스크를 적용한다. (요소별 곱셈: n x 1 = n, n x 0 = 0)
 
-""" 역방향 고속 푸리에 변환(IFFT)
-    푸리에 변환결과를 다시 이미지로 변환한다. """
-fft_ishift = np.fft.ifftshift(fft_shift)  # 셔플링 되었던 것을 역셔플링한다.
+""" 역방향 고속 푸리에 변환(IFFT) """
+fft_ishift = np.fft.ifftshift(hpf)  # 셔플링 되었던 것을 역셔플링한다.
 ifft = np.fft.ifft2(fft_ishift)  # 역방향 고속 푸리에 변환을 한다.
 ifft = np.abs(ifft)  # 절대값 적용
 

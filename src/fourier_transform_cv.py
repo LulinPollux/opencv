@@ -20,10 +20,11 @@ idft = cv2.magnitude(idft[:, :, 0], idft[:, :, 1])  # 절대값 적용
 """ 저주파 통과 필터링(LPF) """
 rows, cols = img.shape
 center_row, center_col = rows // 2, cols // 2  # 이미지의 중심 좌표
-size = 20
+size = 20  # 통과시킬 저주파 영역의 크기 (n x n)
+# 가운데 = 1, 외곽 = 0
 mask = np.zeros((rows, cols, 2), np.uint8)
 mask[center_row - size:center_row + size, center_col - size:center_col + size] = 1
-lpf = dft_shift * mask  # 마스크를 적용한다.
+lpf = dft_shift * mask  # 마스크를 적용한다. (요소별 곱셈: n x 1 = n, n x 0 = 0)
 
 """ LPF가 적용된 역 이산 푸리에 변환(LPF with IDFT) """
 dft_ishift2 = np.fft.ifftshift(lpf)  # 셔플링 되었던 것을 역셔플링한다.
