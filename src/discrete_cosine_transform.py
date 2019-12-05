@@ -39,12 +39,12 @@ plt.title('Input Image'), plt.xticks([]), plt.yticks([])
 plt.subplot(232), plt.imshow(spectrum_img, cmap='gray')  # DCT 영상
 plt.title('DCT'), plt.xticks([]), plt.yticks([])
 
-plt.subplot(234), plt.imshow(idct, cmap='gray')  # IDCT 영상
+plt.subplot(233), plt.imshow(idct, cmap='gray')  # IDCT 영상
 plt.title('IDCT'), plt.xticks([]), plt.yticks([])
 
-plt.subplot(235), plt.imshow(lpf_idct, cmap='gray')  # LPF가 적용된 IFFT 영상
+plt.subplot(234), plt.imshow(lpf_idct, cmap='gray')  # LPF가 적용된 IFFT 영상
 plt.title('IDCT(LPF apply)'), plt.xticks([]), plt.yticks([])
 
-plt.subplot(236), plt.imshow(hpf_idct, cmap='gray')  # HPF가 적용된 IFFT 영상
+plt.subplot(235), plt.imshow(hpf_idct, cmap='gray')  # HPF가 적용된 IFFT 영상
 plt.title('IDCT(HPF apply)'), plt.xticks([]), plt.yticks([])
 plt.show()
