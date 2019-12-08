@@ -22,7 +22,6 @@ lpf_mask = np.zeros((rows, cols), np.uint8)
 lpf_mask[0:size, 0:size] = 1
 lpf = dct * lpf_mask  # 마스크를 적용한다. (요소별 곱셈: n x 1 = n, n x 0 = 0)
 lpf_spectrum = 20 * np.log(1 + cv2.magnitude(lpf[:, :], lpf[:, :]))
-lpf_idct = cv2.idct(lpf)
 
 """ 고주파 통과 필터링(HPF) """
 rows, cols = img.shape
@@ -32,6 +31,9 @@ hpf_mask = np.ones((rows, cols), np.uint8)
 hpf_mask[0:size, 0:size] = 0
 hpf = dct * hpf_mask  # 마스크를 적용한다. (요소별 곱셈: n x 1 = n, n x 0 = 0)
 hpf_spectrum = 20 * np.log(1 + cv2.magnitude(hpf[:, :], hpf[:, :]))
+
+""" LPF, HPF가 적용된 역 이산 코사인 변환(LPF, HPF with IFFT)"""
+lpf_idct = cv2.idct(lpf)
 hpf_idct = cv2.idct(hpf)
 
 

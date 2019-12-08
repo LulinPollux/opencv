@@ -20,7 +20,7 @@ ifft = np.abs(ifft)  # 절대값 적용
 """ 고주파 통과 필터링(HPF) """
 rows, cols = img.shape
 center_row, center_col = rows // 2, cols // 2  # 이미지의 중심 좌표
-size = 20
+size = 20  # 제거시킬 저주파 영역의 크기 (n x n)
 # 가운데 = 0, 외곽 = 1
 hpf_mask = np.ones((rows, cols), np.uint8)
 hpf_mask[center_row - size:center_row + size, center_col - size:center_col + size] = 0
