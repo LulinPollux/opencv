@@ -27,6 +27,8 @@ lpf_mask = np.zeros((rows, cols, 2), np.uint8)
 lpf_mask[center_row - size:center_row + size, center_col - size:center_col + size] = 1
 lpf = dft_shift * lpf_mask  # 마스크를 적용한다. (요소별 곱셈: n x 1 = n, n x 0 = 0)
 lpf_spectrum = 20 * np.log(1 + cv2.magnitude(lpf[:, :, 0], lpf[:, :, 1]))
+lpf_mask2 = np.zeros((rows, cols), np.uint8)
+lpf_mask2[center_row - size:center_row + size, center_col - size:center_col + size] = 1
 
 """ LPF가 적용된 역 이산 푸리에 변환(LPF with IDFT) """
 lpf_ishift = np.fft.ifftshift(lpf)  # 셔플링 되었던 것을 역셔플링한다.
@@ -49,4 +51,7 @@ plt.title('IDFT(LPF apply)'), plt.xticks([]), plt.yticks([])
 
 plt.subplot(235), plt.imshow(lpf_spectrum, cmap='gray')  # LPF가 적용된 DFT 영상
 plt.title('DFT(LPF apply)'), plt.xticks([]), plt.yticks([])
+
+plt.subplot(236), plt.imshow(lpf_mask2, cmap='gray')  # LPF 마스크
+plt.title('LPF Mask'), plt.xticks([]), plt.yticks([])
 plt.show()
