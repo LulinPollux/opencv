@@ -3,7 +3,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 # 입력 영상을 랜덤값으로 만든다.
-src = np.random.randn(100, 100)
+src = np.random.rand(100, 100)
 
 # 커널을 만든다.
 kernel = (1 / 9) * np.ones((3, 3))

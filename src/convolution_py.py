@@ -1,6 +1,5 @@
 import numpy as np
 from matplotlib import pyplot as plt
-import copy
 
 
 def conv2D(src, kernel):
@@ -9,7 +8,7 @@ def conv2D(src, kernel):
     s_rows, s_cols = src.shape      # 입력 영상의 형태
     k_rows, k_cols = kernel.shape   # 커널의 형태
     d = k_rows // 2             # 경계부분 처리, 커널 연산에 사용하는 변수
-    dst = copy.deepcopy(src)    # 출력 영상을 깊은 복사로 만든다.
+    dst = np.ones(src.shape)
 
     for s_row in range(d, s_rows - d):
         for s_col in range(d, s_cols - d):
