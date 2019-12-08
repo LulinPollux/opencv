@@ -3,8 +3,6 @@ from matplotlib import pyplot as plt
 
 
 def conv2D(src, kernel):
-    """ 컨벌루션을 수행하는 함수
-        경계부분은 그대로 두고 처리한다. """
     s_rows, s_cols = src.shape      # 입력 영상의 형태
     k_rows, k_cols = kernel.shape   # 커널의 형태
     d = k_rows // 2             # 경계부분 처리, 커널 연산에 사용하는 변수
@@ -17,7 +15,7 @@ def conv2D(src, kernel):
             for k_row in range(k_rows):
                 for k_col in range(k_cols):
                     temp += src[s_row + (k_row - d)][s_col + (k_col - d)] * kernel[k_row][k_col]
-            dst[s_row][s_col] = np.abs(temp)
+            dst[s_row][s_col] = temp
     return dst
 
 
