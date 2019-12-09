@@ -11,7 +11,7 @@ def conv2D(src, kernel):
     for s_row in range(d, s_rows - d):
         for s_col in range(d, s_cols - d):
             # convolution 처리
-            temp = 0
+            temp = 0.0
             for k_row in range(k_rows):
                 for k_col in range(k_cols):
                     temp += src[s_row + (k_row - d)][s_col + (k_col - d)] * kernel[k_row][k_col]
@@ -19,19 +19,20 @@ def conv2D(src, kernel):
     return dst
 
 
-# 입력 영상을 랜덤값으로 만든다.
-src = np.random.rand(100, 100)
+if __name__ == '__main__':
+    # 입력 영상을 랜덤값으로 만든다.
+    src = np.random.rand(100, 100)
 
-# 커널을 만든다.
-kernel = (1 / 9) * np.ones((3, 3))
+    # 커널을 만든다.
+    kernel = (1 / 9) * np.ones((3, 3))
 
-# 2차원의 컨벌루션을 수행한다.
-dst = conv2D(src, kernel)
+    # 2차원의 컨벌루션을 수행한다.
+    dst = conv2D(src, kernel)
 
-# 결과물을 출력한다.
-plt.subplot(121), plt.imshow(src, cmap='gray')
-plt.title('src'), plt.xticks([]), plt.yticks([])
+    # 결과물을 출력한다.
+    plt.subplot(121), plt.imshow(src, cmap='gray')
+    plt.title('src'), plt.xticks([]), plt.yticks([])
 
-plt.subplot(122), plt.imshow(dst, cmap='gray')
-plt.title('dst'), plt.xticks([]), plt.yticks([])
-plt.show()
+    plt.subplot(122), plt.imshow(dst, cmap='gray')
+    plt.title('dst'), plt.xticks([]), plt.yticks([])
+    plt.show()
