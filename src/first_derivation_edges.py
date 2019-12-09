@@ -18,9 +18,10 @@ def prewitt():
                    [0, 0, 0],
                    [1, 1, 1]], dtype=np.float32)
 
-    dx = cv2.filter2D(src, -1, mx)
-    dy = cv2.filter2D(src, -1, my)
-    dxdy = cv2.addWeighted(dx, 0.5, dy, 0.5, 0)
+    dx = cv2.filter2D(src, cv2.CV_32F, mx)
+    dy = cv2.filter2D(src, cv2.CV_32F, my)
+    dxdy = cv2.magnitude(dx, dy)
+    dxdy = np.clip(dxdy, 0, 255)
 
     plt_arch(221, 'Input Image', src)
     plt_arch(222, 'dx', dx)
@@ -39,9 +40,10 @@ def sobel():
                    [0, 0, 0],
                    [1, 2, 1]], dtype=np.float32)
 
-    dx = cv2.filter2D(src, -1, mx)
-    dy = cv2.filter2D(src, -1, my)
-    dxdy = cv2.addWeighted(dx, 0.5, dy, 0.5, 0)
+    dx = cv2.filter2D(src, cv2.CV_32F, mx)
+    dy = cv2.filter2D(src, cv2.CV_32F, my)
+    dxdy = cv2.magnitude(dx, dy)
+    dxdy = np.clip(dxdy, 0, 255)
 
     plt_arch(221, 'Input Image', src)
     plt_arch(222, 'dx', dx)
@@ -69,4 +71,3 @@ def sobel_cv():
 if __name__ == '__main__':
     prewitt()
     sobel()
-    sobel_cv()
