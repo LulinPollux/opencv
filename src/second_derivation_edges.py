@@ -22,16 +22,6 @@ def laplacian():
     plt.show()
 
 
-def laplacian_cv():
-    src = cv2.imread('../res/lenna.bmp', cv2.IMREAD_GRAYSCALE)
-
-    dst = cv2.Laplacian(src, -1)
-
-    plt_arch(121, 'Input Image', src)
-    plt_arch(122, 'Laplacian', dst)
-    plt.show()
-
-
 def log():
     src = cv2.imread('../res/lenna.bmp', cv2.IMREAD_GRAYSCALE)
 
@@ -66,8 +56,17 @@ def dog():
     plt.show()
 
 
+def laplacian_cv():
+    src = cv2.imread('../res/lenna.bmp', cv2.IMREAD_GRAYSCALE)
+
+    dst = cv2.Laplacian(src, -1)
+
+    plt_arch(121, 'Input Image', src)
+    plt_arch(122, 'Laplacian', dst)
+    plt.show()
+
+
 if __name__ == '__main__':
     laplacian()
-    laplacian_cv()
     log()
     dog()
