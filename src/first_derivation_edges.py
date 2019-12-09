@@ -21,9 +21,9 @@ def roberts():
     gray_compound = np.clip(compound, 0, 255)
 
     plt_arch(221, 'Input Image', src)
-    plt_arch(222, 'Compound', gray_compound)
-    plt_arch(223, 'D_row', d_row)
-    plt_arch(224, 'D_col', d_col)
+    plt_arch(222, 'D_row', d_row)
+    plt_arch(223, 'D_col', d_col)
+    plt_arch(224, 'Compound', gray_compound)
     plt.show()
 
 
@@ -43,9 +43,9 @@ def prewitt():
     gray_compound = np.clip(compound, 0, 255)
 
     plt_arch(221, 'Input Image', src)
-    plt_arch(222, 'Compound', gray_compound)
-    plt_arch(223, 'D_row', d_row)
-    plt_arch(224, 'D_col', d_col)
+    plt_arch(222, 'D_row', d_row)
+    plt_arch(223, 'D_col', d_col)
+    plt_arch(224, 'Compound', gray_compound)
     plt.show()
 
 
@@ -65,9 +65,9 @@ def sobel():
     gray_compound = np.clip(compound, 0, 255)
 
     plt_arch(221, 'Input Image', src)
-    plt_arch(222, 'Compound', gray_compound)
-    plt_arch(223, 'D_row', d_row)
-    plt_arch(224, 'D_col', d_col)
+    plt_arch(222, 'D_row', d_row)
+    plt_arch(223, 'D_col', d_col)
+    plt_arch(224, 'Compound', gray_compound)
     plt.show()
 
 
@@ -81,9 +81,9 @@ def sobel_cv():
     gray_compound = np.clip(compound, 0, 255)
 
     plt_arch(221, 'Input Image', src)
-    plt_arch(222, 'Compound', gray_compound)
-    plt_arch(223, 'D_row', d_row)
-    plt_arch(224, 'D_col', d_col)
+    plt_arch(222, 'D_row', d_row)
+    plt_arch(223, 'D_col', d_col)
+    plt_arch(224, 'Compound', gray_compound)
     plt.show()
 
 
