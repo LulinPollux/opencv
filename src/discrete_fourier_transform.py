@@ -16,7 +16,7 @@ spectrum = 20 * np.log(1 + cv2.magnitude(dft_shift[:, :, 0], dft_shift[:, :, 1])
 """ 역 이산 푸리에 변환(IDFT) """
 dft_ishift = np.fft.ifftshift(dft_shift)  # 셔플링 되었던 것을 역셔플링한다.
 idft = cv2.idft(dft_ishift)  # 역 이산 푸리에 변환을 한다.
-idft = cv2.magnitude(idft[:, :, 0], idft[:, :, 1])  # 절대값 적용
+idft = cv2.magnitude(idft[:, :, 0], idft[:, :, 1])
 
 """ 저주파 통과 필터링(LPF) """
 rows, cols = img.shape
@@ -33,7 +33,7 @@ lpf_mask2[center_row - size:center_row + size, center_col - size:center_col + si
 """ LPF가 적용된 역 이산 푸리에 변환(LPF with IDFT) """
 lpf_ishift = np.fft.ifftshift(lpf)  # 셔플링 되었던 것을 역셔플링한다.
 lpf_idft = cv2.idft(lpf_ishift)  # 역 이산 푸리에 변환을 한다.
-lpf_idft = cv2.magnitude(lpf_idft[:, :, 0], lpf_idft[:, :, 1])  # 절대값 적용
+lpf_idft = cv2.magnitude(lpf_idft[:, :, 0], lpf_idft[:, :, 1])
 
 
 # 결과물을 출력한다.
