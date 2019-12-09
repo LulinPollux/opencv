@@ -8,9 +8,9 @@ from pyplot_template import plt_arch
 def laplacian():
     src = cv2.imread('../res/lenna.bmp', cv2.IMREAD_GRAYSCALE)
 
-    mask = np.array([[0, 1, 0],
-                     [1, -4, 1],
-                     [0, 1, 0]], dtype=np.float32)
+    mask = np.array([[1, 1, 1],
+                     [1, -8, 1],
+                     [1, 1, 1]], dtype=np.float32)
 
     dst = conv2D(src, mask)
     dst = np.clip(dst, 0, 255)
