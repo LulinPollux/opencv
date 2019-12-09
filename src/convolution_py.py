@@ -28,6 +28,7 @@ if __name__ == '__main__':
 
     # 2차원의 컨벌루션을 수행한다.
     dst = conv2D(src, kernel)
+    gray_dst = np.clip(dst, 0, 255)
 
     # 결과물을 출력한다.
     plt.subplot(121), plt.imshow(src, cmap='gray')
