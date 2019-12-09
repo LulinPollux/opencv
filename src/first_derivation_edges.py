@@ -2,11 +2,7 @@ import numpy as np
 import cv2
 from matplotlib import pyplot as plt
 from convolution_py import conv2D
-
-
-def plt_arch(plot_number, title, src):
-    plt.subplot(plot_number), plt.imshow(src, cmap='gray')
-    plt.title(title), plt.xticks([]), plt.yticks([])
+from pyplot_template import plt_arch
 
 
 def roberts():
