@@ -1,6 +1,7 @@
 import numpy as np
 import cv2
 from matplotlib import pyplot as plt
+from convolution_py import conv2D
 
 
 def plt_arch(plot_number, title, src):
@@ -18,9 +19,9 @@ def roberts():
                       [0, 1, 0],
                       [0, 0, 0]], dtype=np.float32)
 
-    d_row = cv2.filter2D(src, cv2.CV_32F, m_row)
-    d_col = cv2.filter2D(src, cv2.CV_32F, m_col)
-    compound = cv2.magnitude(d_row, d_col)
+    d_row = conv2D(src, m_row)
+    d_col = conv2D(src, m_col)
+    compound = np.sqrt(np.power(d_row, 2) + np.power(d_col, 2))
     gray_compound = np.clip(compound, 0, 255)
 
     plt_arch(231, 'Input Image', src)
@@ -40,9 +41,9 @@ def prewitt():
                       [1, 0, -1],
                       [1, 0, -1]], dtype=np.float32)
 
-    d_row = cv2.filter2D(src, cv2.CV_32F, m_row)
-    d_col = cv2.filter2D(src, cv2.CV_32F, m_col)
-    compound = cv2.magnitude(d_row, d_col)
+    d_row = conv2D(src, m_row)
+    d_col = conv2D(src, m_col)
+    compound = np.sqrt(np.power(d_row, 2) + np.power(d_col, 2))
     gray_compound = np.clip(compound, 0, 255)
 
     plt_arch(231, 'Input Image', src)
@@ -62,9 +63,9 @@ def sobel():
                       [-2, 0, 2],
                       [-1, 0, 1]], dtype=np.float32)
 
-    d_row = cv2.filter2D(src, cv2.CV_32F, m_row)
-    d_col = cv2.filter2D(src, cv2.CV_32F, m_col)
-    compound = cv2.magnitude(d_row, d_col)
+    d_row = conv2D(src, m_row)
+    d_col = conv2D(src, m_col)
+    compound = np.sqrt(np.power(d_row, 2) + np.power(d_col, 2))
     gray_compound = np.clip(compound, 0, 255)
 
     plt_arch(231, 'Input Image', src)

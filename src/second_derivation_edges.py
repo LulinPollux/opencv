@@ -1,6 +1,7 @@
 import numpy as np
 import cv2
 from matplotlib import pyplot as plt
+from convolution_py import conv2D
 
 
 def plt_arch(plot_number, title, src):
@@ -15,7 +16,8 @@ def laplacian():
                      [1, -4, 1],
                      [0, 1, 0]], dtype=np.float32)
 
-    dst = cv2.filter2D(src, -1, mask)
+    dst = conv2D(src, mask)
+    dst = np.clip(dst, 0, 255)
 
     plt_arch(121, 'Input Image', src)
     plt_arch(122, 'Laplacian', dst)
@@ -31,7 +33,8 @@ def log():
                      [0, -1, -2, -1, 0],
                      [0, 0, -1, 0, 0]], dtype=np.float32)
 
-    dst = cv2.filter2D(src, -1, mask)
+    dst = conv2D(src, mask)
+    dst = np.clip(dst, 0, 255)
 
     plt_arch(121, 'Input Image', src)
     plt_arch(122, 'LoG', dst)
@@ -49,7 +52,8 @@ def dog():
                      [0, -2, -3, -3, -3, -2, 0],
                      [0, 0, -1, -1, -1, 0, 0]], dtype=np.float32)
 
-    dst = cv2.filter2D(src, -1, mask)
+    dst = conv2D(src, mask)
+    dst = np.clip(dst, 0, 255)
 
     plt_arch(121, 'Input Image', src)
     plt_arch(122, 'DoG', dst)
