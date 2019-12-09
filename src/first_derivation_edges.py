@@ -20,10 +20,10 @@ def roberts():
     compound = np.sqrt(np.power(d_row, 2) + np.power(d_col, 2))
     gray_compound = np.clip(compound, 0, 255)
 
-    plt_arch(231, 'Input Image', src)
-    plt_arch(232, 'D_row', d_row)
-    plt_arch(233, 'D_col', d_col)
-    plt_arch(234, 'Compound', gray_compound)
+    plt_arch(221, 'Input Image', src)
+    plt_arch(222, 'Compound', gray_compound)
+    plt_arch(223, 'D_row', d_row)
+    plt_arch(224, 'D_col', d_col)
     plt.show()
 
 
@@ -42,10 +42,10 @@ def prewitt():
     compound = np.sqrt(np.power(d_row, 2) + np.power(d_col, 2))
     gray_compound = np.clip(compound, 0, 255)
 
-    plt_arch(231, 'Input Image', src)
-    plt_arch(232, 'D_row', d_row)
-    plt_arch(233, 'D_col', d_col)
-    plt_arch(234, 'Compound', gray_compound)
+    plt_arch(221, 'Input Image', src)
+    plt_arch(222, 'Compound', gray_compound)
+    plt_arch(223, 'D_row', d_row)
+    plt_arch(224, 'D_col', d_col)
     plt.show()
 
 
@@ -64,10 +64,10 @@ def sobel():
     compound = np.sqrt(np.power(d_row, 2) + np.power(d_col, 2))
     gray_compound = np.clip(compound, 0, 255)
 
-    plt_arch(231, 'Input Image', src)
-    plt_arch(232, 'D_row', d_row)
-    plt_arch(233, 'D_col', d_col)
-    plt_arch(234, 'Compound', gray_compound)
+    plt_arch(221, 'Input Image', src)
+    plt_arch(222, 'Compound', gray_compound)
+    plt_arch(223, 'D_row', d_row)
+    plt_arch(224, 'D_col', d_col)
     plt.show()
 
 
@@ -80,10 +80,10 @@ def sobel_cv():
     compound = cv2.magnitude(d_col, d_row)
     gray_compound = np.clip(compound, 0, 255)
 
-    plt_arch(231, 'Input Image', src)
-    plt_arch(232, 'D_row', d_row)
-    plt_arch(233, 'D_col', d_col)
-    plt_arch(234, 'Compound', gray_compound)
+    plt_arch(221, 'Input Image', src)
+    plt_arch(222, 'Compound', gray_compound)
+    plt_arch(223, 'D_row', d_row)
+    plt_arch(224, 'D_col', d_col)
     plt.show()
 
 
