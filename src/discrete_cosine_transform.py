@@ -25,7 +25,7 @@ lpf_spectrum = 20 * np.log(1 + cv2.magnitude(lpf[:, :], lpf[:, :]))
 
 """ 고주파 통과 필터링(HPF) """
 rows, cols = img.shape
-size = 23
+size = 40
 # 왼쪽상단 = 0, 나머지 = 1
 hpf_mask = np.ones((rows, cols), np.uint8)
 hpf_mask[0:size, 0:size] = 0
