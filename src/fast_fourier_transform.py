@@ -3,19 +3,19 @@ import numpy as np
 from matplotlib import pyplot as plt
 from pyplot_template import plt_arch
 
-# 원본 이미지를 입력한다.
 img = cv2.imread('../res/lenna.bmp', cv2.IMREAD_GRAYSCALE)
 
 
 """ 고속 푸리에 변환(FFT) """
-fft = np.fft.fft2(img)  # 고속 푸리에 변환을 적용한다.
-fft_shift = np.fft.fftshift(fft)  # 분석을 쉽게 하기 위해 셔플링을 한다.
-spectrum = 20 * np.log(1 + np.abs(fft_shift))  # 스펙트럼 영상을 구한다. D(u, v) = c x log( |F(u, v)| )
+fft = np.fft.fft2(img)  # 고속 푸리에 변환을 한다.
+fft_shift = np.fft.fftshift(fft)  # 셔플링을 한다.
+# 스펙트럼 영상을 구한다. D(u, v) = c x log(1 + |F(u, v)| )
+spectrum = 20 * np.log(1 + np.abs(fft_shift))
 
-""" 역방향 고속 푸리에 변환(IFFT) """
+""" 역 고속 푸리에 변환(IFFT) """
 hpf_ishift = np.fft.ifftshift(fft_shift)  # 셔플링 되었던 것을 역셔플링한다.
-ifft = np.fft.ifft2(hpf_ishift)  # 역방향 고속 푸리에 변환을 한다.
-ifft = np.abs(ifft)  # 절대값 적용
+ifft = np.fft.ifft2(hpf_ishift)  # 역 고속 푸리에 변환을 한다.
+ifft = np.abs(ifft)  # 절대값 적용, 복소수를 실수로 변환
 
 """ 저주파 통과 필터링(LPF) """
 rows, cols = img.shape
@@ -37,15 +37,15 @@ cv2.circle(hpf_mask, (center_row, center_col), size, (0, 0, 0), cv2.FILLED)
 hpf = fft_shift * hpf_mask  # 마스크를 적용한다. (요소별 곱셈: n x 1 = n, n x 0 = 0)
 hpf_spectrum = 20 * np.log(1 + np.abs(hpf))
 
-""" LPF가 적용된 역 이산 푸리에 변환(LPF with IDFT) """
+""" LPF가 적용된 역 고속 푸리에 변환(HPF with IFFT) """
 lpf_ishift = np.fft.ifftshift(lpf)  # 셔플링 되었던 것을 역셔플링한다.
-lpf_ifft = np.fft.ifft2(lpf_ishift)  # 역 이산 푸리에 변환을 한다.
-lpf_ifft = np.abs(lpf_ifft)  # 절대값 적용
+lpf_ifft = np.fft.ifft2(lpf_ishift)  # 역 고속 푸리에 변환을 한다.
+lpf_ifft = np.abs(lpf_ifft)  # 절대값 적용, 복소수를 실수로 변환
 
-""" HPF가 적용된 역방향 고속 푸리에 변환(HPF with IFFT) """
+""" HPF가 적용된 역 고속 푸리에 변환(HPF with IFFT) """
 hpf_ishift = np.fft.ifftshift(hpf)  # 셔플링 되었던 것을 역셔플링한다.
-hpf_ifft = np.fft.ifft2(hpf_ishift)  # 역방향 고속 푸리에 변환을 한다.
-hpf_ifft = np.abs(hpf_ifft)  # 절대값 적용
+hpf_ifft = np.fft.ifft2(hpf_ishift)  # 역 고속 푸리에 변환을 한다.
+hpf_ifft = np.abs(hpf_ifft)  # 절대값 적용, 복소수를 실수로 변환
 
 
 # 결과물을 출력한다.
